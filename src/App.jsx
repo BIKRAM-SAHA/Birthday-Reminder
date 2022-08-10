@@ -1,7 +1,7 @@
 import "./styles/App.css";
 import { readData } from "./utils/firebase";
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, HashRouter, Routes, Route } from "react-router-dom";
 import Card from "./components/Card";
 import AddPersonForm from "./components/AddPersonForm";
 import Loader from "./components/Loader";
@@ -34,7 +34,7 @@ function App() {
   
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={
           <div className="container">
@@ -52,7 +52,7 @@ function App() {
         <Route path="personForm" element={<AddPersonForm/>}/>
         <Route path="allbirthdays" element={<Birthdays/>}/>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
