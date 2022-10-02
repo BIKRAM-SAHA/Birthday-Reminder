@@ -77,7 +77,7 @@ const delBirthday = async (id) => {
     });
 };
 
-module.exports = {
+export {
   addBirthday,
   getBirthdays,
   delBirthday,

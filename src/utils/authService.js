@@ -56,7 +56,7 @@ const login = async (email, password) => {
 // @access: public
 const getMe = (name, email, password) => {};
 
-module.exports = {
+export {
   register,
   login,
   getMe,
