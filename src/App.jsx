@@ -1,58 +1,44 @@
 import "./styles/App.css";
-import { readData } from "./utils/firebase";
-import { useEffect, useState } from "react";
-import { BrowserRouter, HashRouter, Routes, Route } from "react-router-dom";
-import Card from "./components/Card";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import AddPersonForm from "./components/AddPersonForm";
-import Loader from "./components/Loader";
 import Birthdays from "./components/Birthdays";
+import "react-toastify/dist/ReactToastify.css";
+import { createContext } from "react";
+import PrivateRoutes from "./components/PrivateRoute";
+import NotFound from "./pages/NotFound";
+
+export const mainContext = createContext();
 
 function App() {
-  const [personsArray, setPersonsArray] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const paddZero = (value) => {
-    if (value < 9) return "0" + value;
-    else return "" + value;
+  const logout = () => {
+    localStorage.removeItem("user");
   };
-  const today = new Date();
-  const date = paddZero(today.getMonth() + 1) + "-" + paddZero(today.getDate());
-
-  useEffect(() => {
-    const getValues = async () => {
-      const data = await readData().then((response) => {
-        return response || [];
-      });
-      setPersonsArray(
-        data.filter((obj) => (obj.dob.slice(5) === date ? true : false))
-      );
-      setLoading(false);
-    };
-    getValues();
-  }, []);
-
-  
 
   return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={
-          <div className="container">
-            <div className="card">
-              {!loading ? (
-                <Card personsArray={personsArray} date={date} />
-              ) : (
-                <div className="loader">
-                  <Loader />
-                </div>
-              )}
-            </div>
-          </div>
-        }/>
-        <Route path="personForm" element={<AddPersonForm/>}/>
-        <Route path="allbirthdays" element={<Birthdays/>}/>
-      </Routes>
-    </HashRouter>
+    <mainContext.Provider
+      value={{
+        logout,
+      }}
+    >
+      <ToastContainer />
+      <HashRouter>
+        <Routes>
+          <Route path="/" exact element={<Navigate to="/dashboard" />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/personForm" element={<AddPersonForm />} />
+            <Route path="dashboard/allbirthdays" element={<Birthdays />} />
+          </Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </HashRouter>
+    </mainContext.Provider>
   );
 }
 
