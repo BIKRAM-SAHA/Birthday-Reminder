@@ -23,7 +23,7 @@ const register = async (name, email, password) => {
   };
 
   return await fetch(
-    "https://birthday-server.herokuapp.com/register",
+    `${process.env.REACT_APP_SERVER_URI}/register`,
     requestOptions
   )
     .then((response) => response.json())
@@ -39,7 +39,7 @@ const login = async (email, password) => {
     email,
     password,
   };
-  return await fetch("https://birthday-server.herokuapp.com/login", {
+  return await fetch(`${process.env.REACT_APP_SERVER_URI}/login`, {
     method: "POST",
     mode: "cors",
     headers: {
@@ -56,8 +56,4 @@ const login = async (email, password) => {
 // @access: public
 const getMe = (name, email, password) => {};
 
-export {
-  register,
-  login,
-  getMe,
-};
+export { register, login, getMe };

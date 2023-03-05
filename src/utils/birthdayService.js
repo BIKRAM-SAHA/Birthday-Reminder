@@ -11,7 +11,7 @@ const addBirthday = async (name, dob, url) => {
   if (!token) {
     return { msg: "unauthorized" };
   }
-  return await fetch("https://birthday-server.herokuapp.com/birthday", {
+  return await fetch(`${process.env.REACT_APP_SERVER_URI}/birthday`, {
     method: "POST",
     mode: "cors",
     headers: {
@@ -37,7 +37,7 @@ const getBirthdays = async () => {
   if (!token) {
     return { error: "unauthorized" };
   }
-  return await fetch("https://birthday-server.herokuapp.com/birthday", {
+  return await fetch(`${process.env.REACT_APP_SERVER_URI}/birthday`, {
     method: "GET",
     mode: "cors",
     headers: {
@@ -61,7 +61,7 @@ const delBirthday = async (id) => {
   if (!token) {
     return { error: "unauthorized" };
   }
-  return await fetch(`https://birthday-server.herokuapp.com/birthday/${id}`, {
+  return await fetch(`${process.env.REACT_APP_SERVER_URI}/birthday/${id}`, {
     method: "DELETE",
     mode: "cors",
     headers: {
