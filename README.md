@@ -1,13 +1,16 @@
 # Birthday Reminder App
 
 A simple project that gives a reminder of who has a birthday today by viewing data from a json file.
-### DEPLOYMENT LINK: https://birthday-list-reminder.netlify.app/
+### DEPLOYMENT LINK: https://bikram-saha.github.io/Birthday-Reminder/
 
 ## React Concepts Used
 
 - jsx
 - conditional rendering
 - Firebase RealtimeDatabase
+
+## Demo
+![](https://github.com/Birthday-Reminder/birthdayreminder-walkthrough.gif)
 
 
 ## Screenshots 📸
