@@ -10,7 +10,7 @@ A simple project that gives a reminder of who has a birthday today by viewing da
 - Firebase RealtimeDatabase
 
 ## Demo
-![](https://github.com/Birthday-Reminder/birthdayreminder-walkthrough.gif)
+![](https://github.com/BIKRAM-SAHA/Birthday-Reminder/blob/main/birthdayreminder-walkthrough.gif)
 
 
 ## Screenshots 📸
