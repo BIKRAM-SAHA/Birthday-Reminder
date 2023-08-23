@@ -14,14 +14,13 @@ import {
 } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
-  authDomain: "birthday-reminder-2d93d.firebaseapp.com",
-  databaseURL: "https://birthday-reminder-2d93d-default-rtdb.firebaseio.com",
-  projectId: "birthday-reminder-2d93d",
-  storageBucket: "birthday-reminder-2d93d.appspot.com",
-  messagingSenderId: "507306883317",
-  appId: "1:507306883317:web:f783b3726a1ef5a1b2adbc",
-  measurementId: "G-6KTFJ20GBJ",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: "birthdayreminder-23004.firebaseapp.com",
+  projectId: "birthdayreminder-23004",
+  storageBucket: "birthdayreminder-23004.appspot.com",
+  messagingSenderId: "406859573516",
+  appId: "1:406859573516:web:70c0a98f665e1e646d4129",
+  measurementId: "G-D0WD8EV207"
 };
 
 const app = initializeApp(firebaseConfig);
